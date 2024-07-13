@@ -1,0 +1,74 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button type="button" class="btn btn-danger btn-lg me-md-2" data-bs-toggle="modal" data-bs-target="#newRecordModal">
+        Agregar nuevo Registro
+    </button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="newRecordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newRecordModalLabel">Nuevo Registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="row g-3 needs-validation" #recordForm="ngForm">
+                    <div class="container">
+                        <div class="text-center mt-3">
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                    (change)="newRecord.userId = 1" checked>
+                                <label class="btn btn-outline-primary" for="btnradio1">Kevin</label>
+
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"
+                                    (change)="newRecord.userId = 2">
+                                <label class="btn btn-outline-primary" for="btnradio2">Priscila</label>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3 m-4">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Descripción"
+                                required [(ngModel)]="newRecord.description" name="newRecord.description">
+                            <label for="floatingInput">Descripción</label>
+                        </div>
+
+                        <div class="row mb-3 mx-5">
+                            <label for="userPaid" class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-10">
+                                <div class="input-group px-4">
+                                    <span class="input-group-text">₡</span>
+                                    <input id="userPaid" type="text" class="form-control" placeholder="0" appNumericOnly
+                                        required [(ngModel)]="newRecord.userPaid" name="newRecord.userPaid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 mx-5">
+                            <label for="unitPrice" class="col-sm-2 col-form-label">Gastó</label>
+                            <div class="col-sm-10">
+                                <div class="input-group px-4">
+                                    <span class="input-group-text">₡</span>
+                                    <input id="unitPrice" type="text" class="form-control" style="width: 150px;"
+                                        placeholder="0" appNumericOnly required [(ngModel)]="newRecord.unitPrice" name="newRecord.unitPrice">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-secondary mr-2" (click)="getHalf()">Dividir por la mitad</button>
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm()">Cerrar</button>
+                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="createNewRecords()">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="border">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Balance Positivo</span>
+            <div class="container">
+                <div class="row">
+                    <div class="col  mt-2">
+                        <h2>{{ userName }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <input type="text" class="form-control form-control-lg text-center" [(ngModel)]="positiveBalance">
+    </div>
+    <div class="text-center p-3">
+        <button type="button" (click)="getUserBalance()" class="btn btn-dark btn-lg">Calcular</button>
+    </div>
+</div>
